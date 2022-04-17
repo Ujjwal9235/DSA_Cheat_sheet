@@ -5,6 +5,8 @@ for(int i=0;i<l;i++)
     freq[str[i] - 'a']++;
 }
 
+/*  https://www.geeksforgeeks.org/sort-array-strings-according-string-lengths/  */
+
 /*the two string are rotation of each other or not*/
 bool isRotation(string str1,string str2)
 {
@@ -205,6 +207,45 @@ str1.find_first_not_of(str2);
 
 
 
+
+// funtion to find x to the power y.
+ 
+   int power(int x,unsigned int y)
+   {
+       int temp;
+       if(y == 0)
+          return 1;
+       temp = power(x,y/2);
+       if(y%2 == 0)
+         return temp * temp;
+       return x * temp * temp;
+   }
+
+
+// sieve of eratosthenes
+
+int is_prime[1000001];
+void sieve()
+{
+	int maxN = 1000000;
+
+	for(int i = 1;i<=maxN;i++) is_prime[i]=1;
+
+	is_prime[0]=is_prime[1]=0;
+    
+    for(int i = 2;i*i<=maxN;i++)
+    {
+    	if(is_prime[i])
+    	{
+    		for(int j = i*i;j<=maxN;j+=i)
+    			is_prime[j]=0;
+    	}
+    }
+}
+
+
+
+
 //Bit-manupulation to check even and odd numbers
 
 
@@ -373,6 +414,7 @@ no. of bits = log n(base 10) + 1
     vector1.insert( vector1.end(), vector2.begin(), vector2.end() );  -> this will insert the elements of vector2 in the end of vector1.
     vector.erase(pos);  -> this will erase the elements at position pos.
     vector.erase(pos,pos+n);
+    vec.erase(vec.begin() + i); -> this will delete the element at index i of vector.
     vector.swap(v2);  -> swap v2 with vector;
     vector.front(); -> to read the front element.
     vector.back(); -> to read the last element.
@@ -385,7 +427,26 @@ no. of bits = log n(base 10) + 1
    set<int> s;
    set<int> s(vector.begin(),vector.end());  -> this will make a set with the elements of vector, so the freqency of all elements of the vector become 1 or 0 in set and the elements will get sorted automatically in set.
 
+// to access pair value of map inside a map.
+
+   mp<int,pair<int,int>> mp;
   
+   mp.insert(make_pair(5,make_pair(2,3)));   
+
+   int mx = 5;
+   for(auto e:mp)
+    {
+        if(e.first == mx)                -> here e.first is 5;
+        {
+            auto temp = e.second;        -> here pair(2,3) will be stored in temp;
+            cout<<temp.first<<" ";       -> it will return 2;
+            cout<<temp.second<<endl;     -> it will return 3;
+            break;
+        }
+    }
+
+
+
 
 //       string str = "23"
 
